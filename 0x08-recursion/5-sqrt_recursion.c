@@ -1,50 +1,40 @@
 #include "main.h"
 
 /**
- * _sqrt_recursion - print square root of natural number
- * @n:number
- * Return:square root
+ * _evaluate - evaluate function sqrt
+ * @i: integer
+ * @n: integer
+ * Return: evaluate sqrt
  */
+
+int _evaluate(int i, int n)
+{
+	if (n == 0 || n == 1)
+		return (n);
+
+	else if (i * i < n)
+		return (_evaluate(i + 1, n));
+
+	else if (i * i == n)
+		return (i);
+	return (-1);
+	return (-1);
+}
+/**
+ * _sqrt_recursion - evaluate sqrt
+ * @n: integer
+ * Return: Sqrt_recursion
+ */
+
 int _sqrt_recursion(int n)
 {
-	if (n < 0)
-	{
+	int i = 0;
+
+	if (i < 0)
 		return (-1);
-	}
-	else if (n == 0 || n == 1)
-	{
-		return (n);
-	}
+
 	else
 	{
-		int g = (n % 2 == 0) ? (n / 2) : ((n - 1) / 2);
-
-		return (_sqrt_help(n, g));
-	}
-}
-
-/**
- * _sqrt_help - prints square root
- * @n:number
- * @g:guessed number
- * Return:Square root
- */
-int _sqrt_help(int n, int g)
-{
-	if (g * g == n)
-	{
-		return (g);
-	}
-	else if (g * g > n)
-	{
-		return (_sqrt_help(n, g - 1));
-	}
-	else if (g * g < n && (g + 1) * (g + 1) > n)
-	{
-		return (-1);
-	}
-	else
-	{
-		return (_sqrt_help(n, g + 1));
+		return (_evaluate(i, n));
 	}
 }
