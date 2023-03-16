@@ -1,39 +1,73 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include<ctype.h>
 
 /**
- * main - multiplies two positive numbers
- * @argc: n arguments
- * @argv: args
- * Return: int
+ * print_error - checks if the program has error
+ */
+void print_error(void)
+{
+	printf("Error\n");
+	exit(98);
+}
+
+/**
+ * is_valid_number - checks if number is valid
+ * @str:string to check
+ * Return:number
+ */
+int is_valid_number(char *str)
+{
+	while (*str != '\0')
+	{
+		if (!isdigit(*str))
+		{
+			return (0);
+		}
+		str++;
+	}
+	return (1);
+}
+
+/**
+ * parse_number - number
+ * @str:string
+ * Return:parsed number
+ */
+int parse_number(char *str)
+{
+	int num = 0;
+
+	while (*str != '\0')
+	{
+		num = num * 10 + (*str - '0');
+		str++;
+	}
+	return (num);
+}
+
+/**
+ * main - returns a function
+ * @argc: number of arguments
+ * @argv:array of arguments
+ * Return: multiplication of two numbers
  */
 int main(int argc, char *argv[])
 {
-	unsigned long mul;
-	int i, j;
+	int num1, num2, mult;
 
 	if (argc != 3)
 	{
-		printf("Error\n");
-		exit(98);
+		print_error();
 	}
-	for (i = 1; i < argc; i++)
+	if (!is_valid_number(argv[1]) || !is_valid_number(argv[2]))
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
-		{
-			if (argv[i][j] > 57 || argv[i][j] < 48)
-			{
-				printf("Error\n");
-				exit(98);
-			}
-
-		}
-
+		print_error();
 	}
-
-	mul = atol(argv[1]) * atol(argv[2]);
-
-	printf("%lu\n", mul);
-
+	num1 = parse_number(argv[1]);
+	num2 = parse_number(argv[2]);
+	mult = num1 * num2;
+	printf("%d\n", mult);
 	return (0);
-
 }
+
