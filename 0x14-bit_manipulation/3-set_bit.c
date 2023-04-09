@@ -1,22 +1,18 @@
-include "main.h"
+#include "main.h"
 
 /**
- * set_bit - sets value of bit at a given index
- * @n: number  to search
- * @index: indexes
+ * set_bit - Sets the value of a bit at a given index 
+ * @n: number
+ * @index: The index to set the value 
  *
  * Return: bit value
  */
-
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int r;
-
-	if (index > 63)
+	if (index >= (sizeof(unsigned long int) * 8))
 		return (-1);
 
-	r = 1 << index;
-	*n = (*n | r);
+	*n ^= (1 << index);
 
 	return (1);
 }
