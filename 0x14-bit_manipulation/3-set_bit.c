@@ -7,13 +7,16 @@ include "main.h"
  *
  * Return: bit value
  */
+
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	if (index > sizeof(unsigned long int) * 8 - 1)
-	{
-		return (-1);
-	}
+	unsigned int r;
 
-	*n |= (1 << index);
+	if (index > 63)
+		return (-1);
+
+	r = 1 << index;
+	*n = (*n | r);
+
 	return (1);
 }
