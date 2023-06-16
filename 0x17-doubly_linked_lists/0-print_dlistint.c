@@ -1,10 +1,10 @@
 #include "lists.h"
 
 /**
- * print_dlistint - printing alls elements
+ * print_dlistint - printing the elements
  * @h: head of node
  *
- * Return: elements of the linked list
+ * Return: elements of a linked list
  */
 size_t print_dlistint(const dlistint_t *h)
 {
